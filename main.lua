@@ -16,5 +16,6 @@ gui.add_to_menu_bar(function()
 end)
 
 gm.pre_script_hook(gm.constants.item_give, function(self, other, result, args)
-    if repeat_item_enabled then args[3].value = repeat_number end
+    if args[2].value>112  then return end --item ids over 112 don't make sense to dupicate
+    if repeat_item_enabled then args[3].value = repeat_number end 
 end)
