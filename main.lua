@@ -1,6 +1,15 @@
+-- Item Duplicator v1.0.0
+-- SmoothSpatula
+
 local repeat_item_enabled = true
-local repeat_number = 10
 local isChanged = false
+
+
+-- Parameters (in frames)
+local repeat_number = 10
+
+-- ========== ImGui ==========
+
 gui.add_to_menu_bar(function()
     local new_value, clicked = ImGui.Checkbox("Enable Repeat Item", repeat_item_enabled)
     if clicked then
@@ -15,7 +24,9 @@ gui.add_to_menu_bar(function()
     end
 end)
 
+-- ========== Main ==========
+
 gm.pre_script_hook(gm.constants.item_give, function(self, other, result, args)
-    if args[2].value>112 then return end --item ids over 112 don't make sense to dupicate
+    if args[2].value>112 then return end -- Don't duplicate item IDs over 112
     if repeat_item_enabled then args[3].value = repeat_number end 
 end)
