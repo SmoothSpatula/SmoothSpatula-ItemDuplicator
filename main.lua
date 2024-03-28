@@ -4,7 +4,7 @@
 local repeat_item_enabled = true
 local isChanged = false
 
--- Parameters (in frames)
+-- Parameters
 local repeat_number = 10
 
 -- ========== ImGui ==========
