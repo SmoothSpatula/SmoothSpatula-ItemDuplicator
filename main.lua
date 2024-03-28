@@ -4,7 +4,6 @@
 local repeat_item_enabled = true
 local isChanged = false
 
-
 -- Parameters (in frames)
 local repeat_number = 10
 
