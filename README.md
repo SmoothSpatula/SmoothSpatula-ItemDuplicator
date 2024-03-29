@@ -14,6 +14,9 @@ This mod depends on the [Return Of Modding](https://github.com/return-of-modding
 ## Usage
 * Open the ImGUI window display (default key is `Insert`)
 * Choose the number of duplication in the Mod menu.
+
+## Work In Progress
+* In theory this should work with mods which add items now, but it might not.
   
 ## Special Thanks To
 * The Return Of Modding team
