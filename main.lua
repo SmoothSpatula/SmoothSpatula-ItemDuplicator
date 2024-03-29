@@ -26,6 +26,7 @@ end)
 -- ========== Main ==========
 
 gm.pre_script_hook(gm.constants.item_give, function(self, other, result, args)
-    if args[2].value>112 then return end -- Don't duplicate item IDs over 112
-    if repeat_item_enabled then args[3].value = repeat_number end 
+    local item_id = args[2].value
+    if item_id>112 and item_id<136 then return end -- Special items that shouldnt be duplicated (vanilla items have ids under 112 and moded items should have ids over 136)
+    if repeat_item_enabled then args[3].value = repeat_number end
 end)
