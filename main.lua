@@ -1,7 +1,8 @@
--- Item Duplicator v1.0.2
+-- Item Duplicator v1.0.3
 -- SmoothSpatula
 
 -- ========== Loading ==========
+mods.on_all_mods_loaded(function() for _, m in pairs(mods) do if type(m) == "table" and m.RoRR_Modding_Toolkit then for _, c in ipairs(m.Classes) do if m[c] then _G[c] = m[c] end end end end end)
 
 mods.on_all_mods_loaded(function() for k, v in pairs(mods) do if type(v) == "table" and v.tomlfuncs then Toml = v end end 
     params = {
@@ -34,9 +35,12 @@ end)
 
 -- ========== Main ==========
 
-gm.pre_script_hook(gm.constants.item_give, function(self, other, result, args)
-    if not params['repeat_item_enabled'] then return end
-    local item_id = args[2].value
-    if item_id>112 and item_id<136 then return end -- Special items that shouldnt be duplicated (vanilla items have ids under 112 and moded items should have ids over 136)
-    args[3].value = params['repeat_number']
-end)
+function __initialize()
+    Callback.add("onPickupCollected", "SmoothSpatula-ItemDuplicator-Pickup", function(self, other, result, args)
+        if (not params['repeat_item_enabled']) 
+            or self.tier==Item.TIER.special 
+            or self.tier==Item.TIER.equipment 
+            or self.tier>=Item.TIER.notier then return end
+        if params['repeat_number'] > 1 then gm.item_give(other, self.item_id, params['repeat_number']-1) end
+    end)
+end
