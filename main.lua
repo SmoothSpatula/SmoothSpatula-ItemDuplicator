@@ -2,7 +2,7 @@
 -- SmoothSpatula
 
 -- ========== Loading ==========
-mods.on_all_mods_loaded(function() for _, m in pairs(mods) do if type(m) == "table" and m.RoRR_Modding_Toolkit then for _, c in ipairs(m.Classes) do if m[c] then _G[c] = m[c] end end end end end)
+mods["RoRRModdingToolkit-RoRR_Modding_Toolkit"].auto(true)
 
 mods.on_all_mods_loaded(function() for k, v in pairs(mods) do if type(v) == "table" and v.tomlfuncs then Toml = v end end 
     params = {
@@ -35,7 +35,7 @@ end)
 
 -- ========== Main ==========
 
-function __initialize()
+function init()
     Callback.add("onPickupCollected", "SmoothSpatula-ItemDuplicator-Pickup", function(self, other, result, args)
         if (not params['repeat_item_enabled']) 
             or self.tier==Item.TIER.special 
@@ -44,3 +44,5 @@ function __initialize()
         if params['repeat_number'] > 1 then gm.item_give(other, self.item_id, params['repeat_number']-1) end
     end)
 end
+
+Initialize(init)
