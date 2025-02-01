@@ -1,4 +1,4 @@
--- Item Duplicator v1.0.3
+-- Item Duplicator v1.0.5
 -- SmoothSpatula
 
 -- ========== Loading ==========
@@ -36,7 +36,7 @@ end)
 -- ========== Main ==========
 
 function init()
-    Callback.add("onPickupCollected", "SmoothSpatula-ItemDuplicator-Pickup", function(self, other, result, args)
+    Callback_Raw.add("onPickupCollected", "SmoothSpatula-ItemDuplicator-Pickup", function(self, other, result, args)
         if (not params['repeat_item_enabled']) 
             or self.tier==Item.TIER.special 
             or self.tier==Item.TIER.equipment 
