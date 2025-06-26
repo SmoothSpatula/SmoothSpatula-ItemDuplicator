@@ -1,6 +1,6 @@
 {
 	"name": "ItemDuplicator",
-	"version_number": "1.0.5",
+	"version_number": "1.0.6",
 	"website_url": "https://github.com/SmoothSpatula/SmoothSpatula-ItemDuplicator",
 	"description": "Item Duplicator for Risk of Rain Returns",
 	"dependencies": [
