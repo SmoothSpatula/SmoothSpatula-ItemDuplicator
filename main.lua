@@ -37,6 +37,7 @@ end)
 
 function init()
     Callback_Raw.add("onPickupCollected", "SmoothSpatula-ItemDuplicator-Pickup", function(self, other, result, args)
+        if (not self.item_id or self.item_id < 0) then return end
         if (not params['repeat_item_enabled']) 
             or self.tier==Item.TIER.special 
             or self.tier==Item.TIER.equipment 
